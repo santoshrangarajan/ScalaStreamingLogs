@@ -26,8 +26,6 @@ class TCPServer() extends Actor {
     }
 
     case IO.Read(rHandle, bytes) => {
-      val byteString = ByteString("HTTP/1.1 200 OK\r\n\r\nOK")
-      rHandle.asSocket.write(byteString)
       socketConnections.add(rHandle)
       println("Added new client.....")
     }
