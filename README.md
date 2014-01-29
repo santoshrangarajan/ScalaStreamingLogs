@@ -12,7 +12,7 @@ Installation
 
 Usage
 ========
-1. Please refer <a href="http://abstractlayers.com/2014/01/29/actor-based-system-with-akka/">here</a>to get an overview on application
+1. Please refer <a href="http://abstractlayers.com/2014/01/29/actor-based-system-with-akka/">here</a> to get an overview on application
 
 License
 ========
