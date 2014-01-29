@@ -20,11 +20,7 @@ class LogWatcher(logFile: String) extends Actor {
     lines
   }
 
-  def getBytesToSkip(lines: List[String]): Int = {
-    var bytes = 0
-    for (ln <- lines) yield bytes += ln.getBytes().length
-    bytes
-  }
+  
   def receive = {
 
     case Watch(msg) => {
@@ -35,7 +31,7 @@ class LogWatcher(logFile: String) extends Actor {
         if (fileName.length() > originalLength) {
           val lines = getNewLinesFromFile(bytesToSkip)
           sender ! new LogMessages(lines)
-          bytesToSkip = bytesToSkip + getBytesToSkip(lines)
+          bytesToSkip = bytesToSkip +  lines.foldLeft(0) {(total,str)=> total + str.getBytes().length}
           originalLength = fileName.length()
         }
         Thread.sleep(5000)
